@@ -12,7 +12,7 @@ use Symfony\Component\Mime\Email;
 #[AsMessageHandler(fromTransport: 'mqtt')]
 final class ExampleMessageHandler {
 
-    public function __construct(private readonly MailerInterface $mailer, private readonly ?LoggerInterface $logger = null) { }
+    public function __construct(private readonly ?LoggerInterface $logger = null) { }
 
     public function __invoke(ExampleMessage $message): string
     {
