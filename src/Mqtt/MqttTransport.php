@@ -87,7 +87,7 @@ class MqttTransport implements TransportInterface {
             // Subscribe to a topic pattern.
             $this->client->subscribe($topic, function (string $topic, string $message, bool $retained) use (&$queue) {
                 $queue[] = Envelope::wrap($this->serializer->decode([
-                    'body'    => json_encode(['content' => $message]),
+                    'body'    => \json_encode($message),
                     'headers' => [
                         'topic'    => $topic,
                         'retained' => $retained,
