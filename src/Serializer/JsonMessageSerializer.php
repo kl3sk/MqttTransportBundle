@@ -5,7 +5,6 @@ namespace Kl3sk\MqttTransportBundle\Serializer;
 use Kl3sk\MqttTransportBundle\Message\ExampleMessage;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
-use temp\Message\SecondSampleMessage;
 
 class JsonMessageSerializer implements SerializerInterface {
     public function decode(array $encodedEnvelope): Envelope
@@ -30,7 +29,7 @@ class JsonMessageSerializer implements SerializerInterface {
         $message = $envelope->getMessage();
         // expand this logic later if you handle more than
         // just one message class
-        if ($message instanceof SecondSampleMessage) {
+        if ($message instanceof ExampleMessage) {
             // recreate what the data originally looked like
             $data = ['content' => $message->getContent()];
         } else {
