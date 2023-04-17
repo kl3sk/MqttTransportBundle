@@ -97,13 +97,13 @@ class MqttTransport implements TransportInterface {
         }
 
         // Manually loop once at a time and then yield all the queued messages.
-        $loopStartedAt = microtime(true);
+        $loopStartedAt = \microtime(true);
 
         while (true) {
             $this->client->loopOnce($loopStartedAt, true);
 
             while ( ! empty($queue)) {
-                yield array_shift($queue);
+                yield \array_shift($queue);
             }
         }
     }
