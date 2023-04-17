@@ -14,26 +14,13 @@ final class ExampleMessageHandler {
 
     public function __construct(private readonly MailerInterface $mailer, private readonly ?LoggerInterface $logger = null) { }
 
-    public function __invoke(ExampleMessage $message): void
+    public function __invoke(ExampleMessage $message): string
     {
 
         $this->logger?->log(Level::Info, '--------------------------------');
         $this->logger?->log(Level::Info, '--------- Bundle Handled -------');
         $this->logger?->log(Level::Info, '--------------------------------');
 
-        $content = $message->getContent(); //$json['content'];
-
-        $email = (new Email())
-            ->from('hello@example.com')
-            ->to('you@example.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
-            ->subject('Second Sample message')
-            ->text($content)
-            ->html("<p>Transport Message: {$content}</p>");
-
-        $this->mailer->send($email);
+        return $message->getContent();
     }
 }
