@@ -127,7 +127,6 @@ class MqttTransport implements TransportInterface {
      */
     public function send(Envelope $envelope): Envelope
     {
-        $this->logger?->log(Level::Info, 'Send method Not instance of');
         // $encodedMessage = $this->serializer->encode($envelope);
         //
         // // Only QoS 0 can be used because for other kinds of publishing, looping is required,
