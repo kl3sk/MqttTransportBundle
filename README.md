@@ -6,7 +6,7 @@ This bundle provide a MQTT transport for symfony messenger.
 
 ## Installation
 ```bash
-composer require kl3sk/mqtt-transport-bundle
+composer require kl3sk/mqtt-transport-bundle:@dev
 ```
 
 ## Configuration
