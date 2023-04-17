@@ -7,5 +7,5 @@ interface MqttMessageInterface {
 
     public function getQos(): int;
 
-    public function getBody(): string;
+    public function getContent(): string;
 }
