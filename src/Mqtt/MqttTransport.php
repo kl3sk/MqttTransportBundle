@@ -86,13 +86,7 @@ class MqttTransport implements TransportInterface {
         foreach ($this->topics as $topic) {
             // Subscribe to a topic pattern.
             $this->client->subscribe($topic, function (string $topic, string $message, bool $retained) use (&$queue) {
-                $queue[] = Envelope::wrap($this->serializer->decode([
-                    'body'    => \json_encode($message),
-                    'headers' => [
-                        'topic'    => $topic,
-                        'retained' => $retained,
-                    ],
-                ]));
+                $queue[] = Envelope::wrap(new MqttMessage($topic, $message, 0, $retained));
             }, MqttClient::QOS_AT_MOST_ONCE);
         }
 
@@ -144,7 +138,7 @@ class MqttTransport implements TransportInterface {
 
         if ($envelope->getMessage() instanceof MqttMessageInterface) {
             $this->logger?->log(Level::Info, 'Send method');
-            $this->client->publish($envelope->getMessage()->getTopic(), $envelope->getMessage()->getBody(), $envelope->getMessage()->getQos());
+            $this->client->publish($envelope->getMessage()->getTopic(), $envelope->getMessage()->getContent(), $envelope->getMessage()->getQos(), $envelope->getMessage()->getRetain());
         }
 
         return $envelope;

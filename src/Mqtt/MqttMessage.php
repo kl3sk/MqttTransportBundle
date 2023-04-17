@@ -5,9 +5,9 @@ namespace Kl3sk\MqttTransportBundle\Mqtt;
 class MqttMessage implements MqttMessageInterface {
     public function __construct(
         private readonly string $topic,
+        private readonly string $content,
         private readonly int    $qos,
-        private readonly string $body,
-        private readonly string $id
+        private readonly bool   $retain
     )
     {
     }
@@ -22,13 +22,13 @@ class MqttMessage implements MqttMessageInterface {
         return $this->qos;
     }
 
-    public function getBody(): string
+    public function getContent(): string
     {
-        return $this->body;
+        return $this->content;
     }
 
-    public function getId(): string
+    public function getRetain(): string
     {
-        return $this->id;
+        return $this->retain;
     }
 }
