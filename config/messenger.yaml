@@ -1,0 +1,9 @@
+framework:
+    messenger:
+        transports:
+            mqtt:
+                dsn: '%env(MESSENGER_MQTT_TRANSPORT_DSN)%'
+                serializer: Kl3sk\MqttTransportBundle\Serializer\JsonMessageSerializer
+        routing:
+            # Route your messages to the transports
+            'Kl3sk\MqttTransportBundle\Message\ExampleMessage': mqtt
