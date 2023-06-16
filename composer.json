@@ -13,9 +13,9 @@
     "require": {
         "php": ">=8.1",
         "php-mqtt/client": "^1.8",
-        "symfony/serializer": "6.2.*",
-        "symfony/messenger": "6.2.*",
-        "symfony/options-resolver": "6.2.*",
+        "symfony/serializer": "6.3.*",
+        "symfony/messenger": "6.3.*",
+        "symfony/options-resolver": "6.3.*",
         "symfony/monolog-bundle": "^3.8"
     },
     "require-dev": {
